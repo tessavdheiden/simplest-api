@@ -40,9 +40,15 @@ Lauch the app:
 ```bash
 > git push heroku main
 ```
+Now we can check out the app at https://[name-of-app].herokuapp.com/
 
-Enter into the Heroku VM using: 
+Optionally, enter into the Heroku VM using: 
 ```bash
 > heroku run bash --app [name-of-app]
+```
+
+Run tests:
+```bash
+> pytest
 ```
 

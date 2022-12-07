@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 
@@ -7,12 +7,16 @@ class Item(BaseModel):
     id: int
 
 
-app = FastAPI()
+class Data(BaseModel):
+    feature_1: float
+    feature_2: str
 
 
-@app.get("/")
-async def welcome():
-    return {"Hello": "Master"}
+app = FastAPI(
+    name="ShinyApp",
+    description="Small web application",
+    version="0.0.1"
+)
 
 
 # Should be placed on top so "items" does not become a category
@@ -24,3 +28,13 @@ async def get_items(item_id: int, count: int = 1):
 @app.post("/{category}")
 async def create_item(category: str, amount: int, item: Item):
     return {"category": category, "amount": amount, "item": item}
+
+
+@app.post("/")
+async def ingest_data(data: Data):
+    if data.feature_1 < 0.:
+        raise HTTPException(status_code=404, detail=f"feature 1 is negative: {data.feature_1}")
+
+    if len(data.feature_2) > 280:
+        raise HTTPException(status_code=404, detail=f"feature 2 string length is too big: {len(data.feature_2)}")
+    return data

@@ -21,3 +21,15 @@ def test_api_get_item_query_parameter():
 def test_api_malformed_url():
     r = client.get("/items")
     assert r.status_code != 200
+
+
+def test_ingest_data():
+    r = client.post(
+        "/",
+        json={"feature_1": 1.1, "feature_2": "my little pony"}
+    )
+    assert r.status_code == 200
+    assert r.json() == {
+        "feature_1": 1.1,
+        "feature_2": "my little pony",
+    }
