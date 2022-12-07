@@ -20,3 +20,19 @@ Modify:
 ```bash
 > autopep8 --in-place --aggressive --aggressive [script_name].py
 ```
+
+Connecting to Heroku, create an app with a specific name and to specify it as Python app:
+```bash
+> heroku create [name-of-app] --buildpack heroku/python
+```
+
+Create another remote on Heroku: 
+```bash
+> heroku git:remote --app [name-of-app]
+```
+
+Enter into the Heroku VM using: 
+```bash
+> heroku run bash --app [name-of-app]
+```
+
