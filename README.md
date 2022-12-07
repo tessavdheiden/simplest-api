@@ -31,6 +31,16 @@ Create another remote on Heroku:
 > heroku git:remote --app [name-of-app]
 ```
 
+Optionally, check if the remote is there:
+```bash
+> git remote -v
+```
+
+Lauch the app:
+```bash
+> git push heroku main
+```
+
 Enter into the Heroku VM using: 
 ```bash
 > heroku run bash --app [name-of-app]

@@ -10,6 +10,11 @@ class Item(BaseModel):
 app = FastAPI()
 
 
+@app.get("/")
+async def welcome():
+    return {"Hello": "Master"}
+
+
 # Should be placed on top so "items" does not become a category
 @app.get("/items/{item_id}")
 async def get_items(item_id: int, count: int = 1):
