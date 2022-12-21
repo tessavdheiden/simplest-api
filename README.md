@@ -1,10 +1,16 @@
 # Application with FastAPI
 
+This is the simplest api one can think of, but can be used to make one specific for you application.
+
+## Setup
+
 Create conda environment with dependencies:
 ```bash
 > conda env create -f environment.yml
 > conda activate fast_api_app
 ```
+
+## How it works
 
 Launch app:
 ```bash
